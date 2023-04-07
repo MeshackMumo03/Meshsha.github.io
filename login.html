@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <title>Login</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Gallery and Rooms</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="Ourteam.html">Our Team</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <section>
+                <h1>Login</h1>
+                <form method="post" action="login.php">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email"><br><br>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password"><br><br>
+                    <input type="submit" value="Submit">
+                </form>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2023 Meshack. All rights reserved.</p>
+    </footer>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const error = urlParams.get('error');
+        if (error) {
+            let errorMessage;
+            if (error == 1) {
+                errorMessage = 'Incorrect email or password. Please try again.';
+            } else if (error == 2) {
+                errorMessage = 'Please provide an email and password to login.';
+            }
+
+
+            const notification = document.createElement('div');
+            notification.classList.add('notification');
+            notification.innerHTML = `<p>${errorMessage}</p><button class="close-button">Close</button>`;
+            document.body.appendChild(notification);
+
+
+            const closeButton = notification.querySelector('.close-button');
+            closeButton.addEventListener('click', () => {
+                notification.remove();
+            });
+        }
+    </script>
+    <script>
+        const form = document.querySelector('form');
+        form.addEventListener('submit', (event) => {
+            const emailInput = document.querySelector('#email');
+            const passwordInput = document.querySelector('#password');
+            if (emailInput.value === '' || passwordInput.value === '') {
+                alert('Please fill in all text areas before submitting!');
+                event.preventDefault();
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="contactus.css">
+    <script src="chatbox.js"></script>
+
+    <title>Contact Us</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Gallery and Rooms</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="Ourteam.html">Our Team</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+                <button><a href="logout.php">Sign Out</a></button>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <p>We are a company that provides high-quality products, services and spacious rooms to our customers. We are located at
+            <li><a href="https://www.google.com/maps/place/Mesh+Gen+Hardware/@-1.381231,36.676714,3a,75y,100.18h,93.63t/data=!3m6!1e1!3m4!1sIqUf07QIG8eNkQhiXUX-Ag!2e0!7i16384!8i8192!4m6!3m5!1s0x182f039901dd27b1:0xd1408ca51b2619ca!8m2!3d-1.3812487!4d36.6768857!16s%2Fg%2F11g2rgfp45"
+                    target="_blank"> Forest Line Road Kajiado County on your way to Matasia </a></li>
+            <br> You can come down to visit us or contact our agents through their numbers: 0790506271 || 0751861854 </p>
+
+        <div class="container">
+            <section>
+                <h1>Contact Us</h1>
+                <p>For any enquiries about room vacancies, please feel free to fill the form below, or for any assistance for those who are already</p>
+                <form onsubmit="sendEmail(); return false;">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required><br><br>
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" required><br><br>
+                    <label for="phone-number">Phone Number:</label>
+                    <input type="tel" id="phone-number" name="phone-number" required><br><br>
+                    <label for="message">Message:</label><br>
+                    <textarea id="message" name="message" rows="5" cols="50" required></textarea><br><br>
+                    <input type="submit" value="Submit">
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Meshack. All rights reserved.</p>
+    </footer>
+    <script src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("nQsL2G-Er6dASumQ7");
+        })();
+
+        function playSound(url) {
+            const audio = new Audio(url);
+            audio.play();
+        }
+
+        function sendEmail() {
+
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone-number").value;
+            const message = document.getElementById("message").value;
+
+
+            emailjs.send("service_sg6pwpx", "template_ap77qed", {
+                    from_name: name,
+                    from_email: email,
+                    from_phone: phone,
+                    message: message,
+                })
+                .then(function(response) {
+                    playSound("ding.mp3");
+                    alert("Mail sent successfully. We'll get back to you as soon as possible.");
+                }, function(error) {
+                    playSound("buzzer.mp3");
+                    alert("Mail not sent successfully.");
+                });
+        }
+    </script>
+</body>
+
+</html>

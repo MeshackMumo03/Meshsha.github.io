@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="services.css">
+    <script src="chatbox.js"></script>
+    <title>Gallery and Rooms</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Gallery and Rooms</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="Ourteam.html">Our Team</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+                <button><a href="logout.php">Sign Out</a></button>
+            </ul>
+        </nav>
+    </header>
+    <p>We offer quality rooms and you can see the gallery</p>
+    <div>
+        <label for="room-type">Choose a room type or to view the gallery:</label>
+        <select id="room-type">
+            <option value="">Select a room type or to view the gallery</option>
+            <option value="one-bedroom">One Bedroom</option>
+            <option value="bedsitter">Studio</option>
+            <option value="gallery">Gallery</option>
+        </select>
+    </div>
+    <p>
+        <div id="room-images"></div>
+        <script>
+            const roomTypeSelect = document.querySelector('#room-type');
+            const roomImagesDiv = document.querySelector('#room-images');
+            roomTypeSelect.addEventListener('change', () => {
+                const selectedValue = roomTypeSelect.value;
+                let imagesHTML = '';
+                if (selectedValue === 'one-bedroom') {
+                    imagesHTML = `
+                        <figure>
+                            <img src="images/bathroom.jpg" alt="Bathroom">
+                            <figcaption>Bathroom</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="images/bedroom.jpeg" alt="Bedroom">
+                            <figcaption>Bedroom</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="images/bedroom2.jpeg" alt="Bedroom 2">
+                            <figcaption>Bedroom Cabinet</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="images/corridor.jpg" alt="Corridor">
+                            <figcaption>Corridor</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="images/kitchen.jpg" alt="Kitchen">
+                            <figcaption>Kitchen</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="images/livingroom.jpg" alt="Living room">
+                            <figcaption>Living room</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="images/oneroomdoor view.jpeg" alt="One room door view">
+                            <figcaption>Door View</figcaption>
+                        </figure>
+                        <div>
+                            <p>Features: One bedroom, one bathroom, one living room, one kitchen.</p>
+                            <p>Spacious living room and bedroom. Peaceful environment.</p>
+                            <p>Price: KES 12,000/month</p>
+                          </div>
+                    `;
+                } else if (selectedValue === 'bedsitter') {
+                    imagesHTML = `
+                        <figure>
+                            <img src="images/bathroom2.jpeg" alt="Bathroom 2">
+                            <figcaption>Bathroom</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="images/bedsitter kitchen.jpeg" alt="Studio kitchen">
+                            <figcaption>Kitchen</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="images/bedsitterdoorview.jpeg" alt="Studio door view">
+                            <figcaption>Bedsitter door view</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="images/bedsitterlivingroom.jpeg" alt="Studio living room">
+                            <figcaption>Bedsitter living room</figcaption>
+                        </figure>
+                        <div>
+                            <p>Features: One bathroom, one common area with kitchen combined.</p>
+                            <p>Spacious common room. Peaceful environment.</p>
+                            <p>Price: KES 8,500/month</p>
+                          </div>
+                    `;
+                } else if (selectedValue === 'gallery') {
+                    imagesHTML = `
+                        <figure>
+                            <img src="images/IMG-20230322-WA0024.jpg" alt="Front View">
+                            <figcaption>Front View</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="images/IMG-20230322-WA0014.jpg" alt="Front View with Stage view">
+                            <figcaption>Front View with Stage view and Front parking</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="images/IMG-20230322-WA0017.jpg" alt="Outside Corridor view">
+                            <figcaption>Outside Corridor view</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="images/20230402_122508.jpg" alt="Parking view">
+                            <figcaption>Parking view</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="images/20230402_122525.jpg" alt="Parking view">
+                            <figcaption>Parking view</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="images/20230402_122530.jpg" alt="Parking view">
+                            <figcaption>Parking view</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="images/IMG-20230404-WA0019.jpg" alt="Parking view">
+                            <figcaption>Front Parking view</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="images/20230402_122703.jpg" alt="Rooftop view">
+                            <figcaption>Rooftop view</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="images/20230402_122710.jpg" alt="Rooftop view">
+                            <figcaption>Rooftop view</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="images/20230402_122714.jpg" alt="Rooftop view">
+                            <figcaption>Rooftop view</figcaption>
+                        </figure>
+                        <div>
+                            <p>Features: Spacious corridor view, spacious parking and spacious rooftop room</p>
+                            
+                          </div>
+                    `;
+                }
+                roomImagesDiv.innerHTML = imagesHTML;
+            });
+        </script>
+
+    </p>
+    <footer>
+        <p>&copy; 2023 Meshack. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
